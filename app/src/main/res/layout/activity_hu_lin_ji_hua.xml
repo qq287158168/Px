@@ -7,4 +7,11 @@
     tools:context="com.sby1027.px.activity.HuLinJiHuaActivity">
 
 
+    <Button
+        android:id="@+id/btn"
+        android:text="开始跳转"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </LinearLayout>
