@@ -3,7 +3,6 @@ package com.sby1027.px.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 public class MyService2 extends Service {
@@ -51,7 +50,6 @@ public class MyService2 extends Service {
         super.onDestroy();
     }
 
-    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;

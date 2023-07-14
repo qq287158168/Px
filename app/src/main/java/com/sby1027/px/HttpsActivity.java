@@ -1,16 +1,20 @@
 package com.sby1027.px;
 
+import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
+
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.sby1027.px.databinding.ActivityHttpsBinding;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.cookie.CookieJarImpl;
@@ -23,18 +27,13 @@ import java.util.concurrent.TimeUnit;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
-
-import static android.webkit.WebSettings.LayoutAlgorithm.SINGLE_COLUMN;
 
 public class HttpsActivity extends AppCompatActivity {
 
     private static final String TAG = "HttpsActivity";
 
-    @BindView(R.id.web)
     WebView web;
 
     private HttpsUtils.SSLParams sslParams;
@@ -43,8 +42,9 @@ public class HttpsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_https);
-        ButterKnife.bind(this);
 
+        ActivityHttpsBinding inflate = ActivityHttpsBinding.inflate(getLayoutInflater());
+        web = inflate.web;
 
         sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
 
@@ -130,7 +130,7 @@ public class HttpsActivity extends AppCompatActivity {
         public void onResponse(String response, int id) {
 
             Log.i(TAG, response);
-            // TODO: 2017/5/20 12306的响应
+            //TODO: 2017/5/20 12306的响应
         }
     }
 
